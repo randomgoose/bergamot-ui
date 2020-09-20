@@ -1,0 +1,21 @@
+.Swatch {
+  width: 240px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  text-align: center;
+  transition: all .1s;
+  cursor: pointer;
+
+  &:hover {
+    border-radius: .1rem;
+    transform: scale(1.1);
+    box-shadow: 1px 1px 20px rgba(black, .1);
+  }
+}
+
+
+
+@import "./scss/variables";
+
+@import "./components/Button/Button";
