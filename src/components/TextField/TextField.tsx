@@ -1,19 +1,21 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import classNames from "classnames";
 
 interface Props {
-
+    processing?: boolean,
+    style?: CSSProperties
 }
 
-const TextField = ({ }: Props) => {
+const TextField = ({ processing, style }: Props) => {
 
     const classes = classNames({
-        TextField: "TextField"
+        TextField: "TextField",
+        processing: processing
     })
 
 
     return (
-        <div className={classes}>
+        <div className={classes} style={style}>
             <input placeholder={"Please type in..."}></input>
             <label></label>
         </div>

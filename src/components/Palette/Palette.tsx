@@ -93,8 +93,6 @@ const Palette = () => {
 
       return (
         <div className="Palette">
-          <h1>Bergamot Design</h1>
-          <h2>1. Color Palette</h2>
           <div className="swatches" style={{ display: "flex" }}>
             {swatchs}
           </div>

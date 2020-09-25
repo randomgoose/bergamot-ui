@@ -5,6 +5,22 @@
     color: $color-teal-6;
     font-size: 14px;
     padding: 5px 8px;
+    display: flex;
+    align-items: center;
+
+    &__closeButton {
+        position: absolute;
+        right: 8px;
+        cursor: pointer;
+    }
+
+    &__prefixIcon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 8px;
+        margin-left: 4px;
+    }
 
     &::before {
         content: "";
@@ -18,5 +34,29 @@
     }
 
     &.error {
+        background: $color-red-1;
+        color: $color-red-6;
+
+        &::before {
+            background: $color-red-6;
+        }
+    }
+
+    &.success {
+        background: $color-green-1;
+        color: $color-green-6;
+
+        &::before {
+            background: $color-green-6;
+        }
+    }
+
+    &.warning {
+        background: $color-orange-1;
+        color: $color-orange-6;
+
+        &::before {
+            background: $color-orange-6;
+        }
     }
 }

@@ -1,10 +1,10 @@
-import React, { CSSProperties, ReactNode } from "react";
+import React, { CSSProperties, ReactNode, useState } from "react";
 import classNames from "classnames";
-import { FaTimes } from "react-icons/fa";
+import { BsX, BsFillInfoCircleFill } from "react-icons/bs";
 
 
 export interface Props {
-    statuts?: "primary" | "secondary" | "outlined";
+    status?: "info" | "error" | "warning" | "success";
     prefixIcon?: ReactNode;
     info?: string;
     style?: CSSProperties;
@@ -12,22 +12,25 @@ export interface Props {
     closable?: boolean;
 }
 
-const Alert = ({ statuts, prefixIcon, info, style, closable, closeButton }: Props) => {
+const Alert = ({ status, prefixIcon, info, style, closable, closeButton }: Props) => {
+    const [visible, setVisible] = useState(true);
 
-    const close = (e?:MouseEvent) => {
-
+    const close = (e?:React.MouseEvent<HTMLSpanElement>) => {
+        setVisible(false);
     }
 
     const classes = classNames({
         Alert: "Alert",
+        [`${status}`]: status,
     })
 
     return (
+        visible ?
         <div className={classes} style={{ marginTop: 20 }}>
             <span className={"Alert__prefixIcon"}>{prefixIcon}</span>
             <span className={"Alert__text"}>{info}</span>
-            <span>{closable ? closeButton ? closeButton : <FaTimes /> : null }</span>
-        </div>
+            <span className={"Alert__closeButton"} onClick={close}>{closable ? closeButton ? closeButton : <BsX /> : null }</span>
+        </div> : null
     );
 };
 

@@ -12,8 +12,6 @@
   color: $color-white;
   transition: all 0.2s;
   outline: none;
-  animation: shadowSpread 3s ease;
-  animation-iteration-count: infinite;
   
   &:hover {
     background: $color-teal-5;
@@ -21,8 +19,7 @@
 
   &:active {
     background: $color-teal-7;
-    box-shadow: 0 0 0 2px $color-teal-2;
-    // animation: shadowSpread 0.3s ease;
+    box-shadow: 0 0 0 2px $color-teal-3;
     animation-fill-mode: both;
   }
 
@@ -49,6 +46,10 @@
 
   &.secondary {
     background: gray;
+
+    &:active {
+      box-shadow: 0 0 0 2px darkgray;
+    }
   }
 
   &:disabled {
@@ -64,17 +65,5 @@
   &.block &__suffixIcon {
     position: absolute;
     right: 6px;
-  }
-}
-
-@keyframes shadowSpread {
-  0% {
-    box-shadow: 0 0 0 2px rgba($color-teal-6, 0);
-  }
-  50% {
-    box-shadow: 0 0 0 4px rgba($color-teal-6, 0.25);
-  }
-  100% {
-    box-shadow: 0 0 0 2px rgba($color-teal-6, 0);
   }
 }
