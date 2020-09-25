@@ -1,20 +1,30 @@
-import React, { ReactNode } from "react";
+import React, { CSSProperties, ReactNode } from "react";
+import classNames from "classnames";
 
 export interface Props {
-  type: "primary" | "secondary" | "outlined";
-  loading: boolean;
-  prefixIcon: ReactNode;
-  suffixIcon: ReactNode;
-  label: string;
-  block: boolean;
+  type?: "primary" | "secondary" | "outlined";
+  loading?: boolean;
+  prefixIcon?: ReactNode;
+  suffixIcon?: ReactNode;
+  disabled?: boolean;
+  label?: string;
+  block?: boolean;
+  style?: CSSProperties;
 }
 
-const Button = ({ type, prefixIcon, suffixIcon, label }: Props) => {
+const Button = ({ type, prefixIcon, suffixIcon, label, disabled, block, style }: Props) => {
+
+  const classes = classNames({
+    Button: "Button",
+    [`${type}`]: type,
+    block: block
+  })
+
   return (
-    <button className={`Button`}>
-      {prefixIcon}
-      {label ? label : "Button"}
-      {suffixIcon}
+    <button className={classes} disabled={disabled} style={style}>
+      <span className={`Button__prefixIcon`}>{prefixIcon}</span>
+      <span className={`Button__text`}>{label ? label : "Button"}</span>
+      <span className={`Button__suffixIcon`}>{suffixIcon}</span>
     </button>
   );
 };

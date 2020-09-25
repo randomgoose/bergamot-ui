@@ -1,0 +1,12 @@
+.TextField {
+    & input {
+        transition: all 0.2s;
+        border: 1px solid lightgray;
+        border-radius: 2px;;
+
+        &:hover, &:focus {
+            box-shadow: 0 0 0 2px $color-teal-3;
+            border: 1px solid lightgray;
+        }
+    }
+}

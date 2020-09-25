@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+html {
+    box-sizing: border-box;
+  }
+
+*, *:before, *:after {
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: inherit;
+}
