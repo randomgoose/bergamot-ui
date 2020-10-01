@@ -7,11 +7,25 @@
     padding: 5px 8px;
     display: flex;
     align-items: center;
+    animation: rotation 1s ease;
+    transform-origin: top;
 
     &__closeButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position: absolute;
         right: 8px;
         cursor: pointer;
+
+        &:hover::after {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+        }
     }
 
     &__prefixIcon {
@@ -31,6 +45,7 @@
         background: $color-teal-6;
         left: 0;
         top: 0;
+        transition: all .5s ease;
     }
 
     &.error {
@@ -44,7 +59,7 @@
 
     &.success {
         background: $color-green-1;
-        color: $color-green-6;
+        color: $color-green-6; 
 
         &::before {
             background: $color-green-6;

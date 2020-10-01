@@ -12,6 +12,8 @@ export interface Props {
     closable?: boolean;
 }
 
+
+
 const Alert = ({ status, prefixIcon, info, style, closable, closeButton }: Props) => {
     const [visible, setVisible] = useState(true);
 

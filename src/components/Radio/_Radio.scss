@@ -1,4 +1,4 @@
-.Checkbox {
+.Radio {
     display: flex;
     align-items: center;
 
@@ -17,7 +17,7 @@
         width: 16px;
         height: 16px;
         margin-right: 4px;
-        border-radius: 2px;
+        border-radius: 50%;
         border: 1px solid lightgray;
         transition: all .2s ease;
         background-size: 0 0;
@@ -35,14 +35,14 @@
         }
     }
 
-    & input:checked ~ .Checkbox__checkmark {
+    & input:checked ~ .Radio__checkmark {
         background: $color-teal-6;
         border: 1px solid $color-teal-6;
         background-size: 100% 100%;
 
         & svg {
             stroke-width: 2;
-            transform: scale(.8);
+            transform: scale(1.5);
         }
     }
 }

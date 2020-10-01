@@ -10,9 +10,10 @@ export interface Props {
   label?: string;
   block?: boolean;
   style?: CSSProperties;
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button = ({ type, prefixIcon, suffixIcon, label, disabled, block, style }: Props) => {
+const Button = ({ type, prefixIcon, suffixIcon, label, disabled, block, style, onClick }: Props) => {
 
   const classes = classNames({
     Button: "Button",
@@ -21,7 +22,11 @@ const Button = ({ type, prefixIcon, suffixIcon, label, disabled, block, style }:
   })
 
   return (
-    <button className={classes} disabled={disabled} style={style}>
+    <button className={classes}
+            disabled={disabled}
+            style={style}
+            onClick={onClick}
+            >
       <span className={`Button__prefixIcon`}>{prefixIcon}</span>
       <span className={`Button__text`}>{label ? label : "Button"}</span>
       <span className={`Button__suffixIcon`}>{suffixIcon}</span>

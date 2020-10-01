@@ -1,23 +1,75 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, ReactNode } from "react";
 import classNames from "classnames";
+import { BsPerson } from "react-icons/bs";
 
 interface Props {
     processing?: boolean,
-    style?: CSSProperties
+    style?: CSSProperties,
+    textArea?: boolean,
+    prefixIcon?: ReactNode,
+    suffixIcon?: ReactNode,
+    maxLength?: number,
+    placeholder?: string,
+    allowDrop?: boolean
 }
 
-const TextField = ({ processing, style }: Props) => {
+const TextField = ({ processing, style, prefixIcon, suffixIcon, textArea, maxLength, placeholder, allowDrop }: Props) => {
+    const [value, setValue] = React.useState("");
+    const [itemOver, setItemOver] = React.useState(false);
+
 
     const classes = classNames({
         TextField: "TextField",
-        processing: processing
+        processing: processing,
+        withPrefixIcon: prefixIcon,
+        withSuffixIcon: suffixIcon,
+        textArea: textArea,
+        maxLengthSet: maxLength,
+        placeholder: placeholder,
+        itemOver: itemOver,
+        allowDrop: allowDrop
     })
+
+    const changeHandler = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+        setValue(e.target.value);
+    }
+
+    const dragOverHandler = (e: React.DragEvent<HTMLDivElement>) => {
+        if (allowDrop) setItemOver(true);
+    }
+
+    const dragLeaveHandler = (e: React.DragEvent<HTMLDivElement>) => {
+        if (allowDrop) setItemOver(false);
+    }
+
+    const dropHandler = (e: React.DragEvent<HTMLDivElement>) => {
+        if (allowDrop) setItemOver(false);
+    }
 
 
     return (
-        <div className={classes} style={style}>
-            <input placeholder={"Please type in..."}></input>
-            <label></label>
+        <div className={classes} style={style} onDragOver={dragOverHandler} onDragLeave={dragLeaveHandler} onDrop={dropHandler}>
+            { prefixIcon ?
+                <span className={"TextField__prefixIcon"}>{prefixIcon}</span> :
+                null}
+            { textArea ?
+                <textarea
+                    placeholder={placeholder ? placeholder : "Please type in something..."}
+                    maxLength={maxLength}
+                    onChange={changeHandler}
+                    value={value}
+                /> :
+                <input
+                    placeholder={"Please type in..."}
+                    maxLength={maxLength}
+                    onChange={changeHandler}
+                    value={value}
+                />
+            }
+            { suffixIcon ?
+                <span className={"TextField__suffixIcon"}>{suffixIcon}</span> :
+                null}
+            { maxLength ? <label className={"TextField__maxLength"}>{`${value.length}/`}<span style={{ color: "gray" }}>{`${maxLength}`}</span></label> : null}
         </div>
 
     )

@@ -3,17 +3,22 @@ import classNames from "classnames";
 import { BsCheck } from "react-icons/bs";
 
 interface Props {
-    id: string
+    id: string,
+    label?: string
 }
 
+const Checkbox = ({ id, label }: Props) => {
+    const [checked, setChecked] = React.useState(false);
 
+    const toggle = (e?: React.MouseEvent) => {
+        setChecked(!checked)
+    }
 
-const Checkbox = ({ id }: Props) => {
     return (
         <span className={"Checkbox"}>
-            <input type={"checkbox"} id={"checkbox"}></input>
-            <span className={"Checkbox__checkmark"}><BsCheck /></span>
-            <label htmlFor={"checkbox"}>Checkbox</label>
+            <input type={"checkbox"} id={id} name={"checkbox"} checked={checked}></input>
+            <span onClick={toggle} className={"Checkbox__checkmark"}><BsCheck /></span>
+            {label ? <label onClick={toggle} htmlFor={id}>{label}</label> : null}
         </span>
     )
 }
