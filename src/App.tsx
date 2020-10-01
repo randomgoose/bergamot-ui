@@ -11,6 +11,7 @@ import { BsPerson, BsPlus, BsFillInfoCircleFill, BsXCircleFill, BsQuestionCircle
 import Radio from "./components/Radio/Radio";
 import Card from "./components/Card/Card";
 import Progress from "./components/Progress/Progress";
+import Input from "./components/Input/Input";
 
 const baseColors = [
   {
@@ -153,6 +154,8 @@ export default function App() {
       <Progress value={progressValue} label style={{ marginBottom: 20 }} />
       <Progress value={62} status={"finished"} label style={{ marginBottom: 20 }} />
       <Progress value={62} status={"paused"} label />
+      <h3>Input</h3>
+      <Input></Input>
     </div >
   );
 }
