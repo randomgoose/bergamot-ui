@@ -13,20 +13,21 @@ interface Props {
 const Card = ({ children, actions, title, size, borderless, style }: Props) => {
     const classes = classNames({
         Card: "Card",
-        borderless: !borderless
+        borderless: borderless
     })
 
     return (
         <div className={classes} style={style}>
             <div className={"Card__header"}>
-                <h3 className={"Card__title"}>Card Title</h3>
+                <h3 className={"Card__title"}>{title}</h3>
             </div>
             <div className={"Card__body"}>
                 {children}
             </div>
-            <div className={"Card__footer"}>
+            { actions ? <div className={"Card__footer"}>
                 {actions}
-            </div>
+            </div> : null
+            }
         </div>
     )
 }

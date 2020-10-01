@@ -1,8 +1,8 @@
 .Progress {
     display: flex;
     align-items: center;
-    transition: all .1s;
-    
+    transition: all 0.1s;
+
     &.bar &__outer {
         width: 300px;
         height: 4px;
@@ -25,5 +25,31 @@
         font-size: 12px;
         color: darkgray;
         margin-left: 8px;
+    }
+
+    &.finished &__inner {
+        background-color: $color-green-6;
+    }
+
+    &.paused &__inner {
+        background-color: darkgray;
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 8px;
+        & svg {
+            stroke-width: 1;
+        }
+    }
+
+    &.paused &__icon {
+        color: darkgray;
+    }
+
+    &.finished &__icon {
+        color: $color-green-6;
     }
 }

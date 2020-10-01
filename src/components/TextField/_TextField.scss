@@ -5,6 +5,7 @@
 
     & textarea {
         display: block;
+        margin: 0;
     }
 
     &.itemOver {
@@ -76,7 +77,7 @@
         }
     }
 
-    &.processing input {
+    &.processing input, textarea {
         border: 1px solid $color-teal-6;
         animation: shadowSpread 2s ease;
         animation-iteration-count: infinite;

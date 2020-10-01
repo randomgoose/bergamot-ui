@@ -27,9 +27,9 @@ const Button = ({ type, prefixIcon, suffixIcon, label, disabled, block, style, o
             style={style}
             onClick={onClick}
             >
-      <span className={`Button__prefixIcon`}>{prefixIcon}</span>
+      { prefixIcon ? <span className={`Button__prefixIcon`}>{prefixIcon}</span> : null }
       <span className={`Button__text`}>{label ? label : "Button"}</span>
-      <span className={`Button__suffixIcon`}>{suffixIcon}</span>
+      {suffixIcon ? <span className={`Button__suffixIcon`}>{suffixIcon}</span> : null }
     </button>
   );
 };

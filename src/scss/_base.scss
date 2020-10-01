@@ -8,3 +8,11 @@ html {
     font-family: 'Open Sans', sans-serif;
     box-sizing: inherit;
 }
+
+.Row > *{
+  margin: 10px 0;
+}
+
+body {
+  padding: 0 320px;
+}

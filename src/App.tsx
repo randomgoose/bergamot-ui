@@ -59,35 +59,69 @@ export default function App() {
       if (progressValue < 100) {
         setProgressValue(v => v + 1)
       } else setProgressValue(v => 0);
-    }, 50);
+    }, 10);
 
     return () => clearInterval(timer);
   }, [progressValue]);
 
   return (
-    <div className={"App"}>
+    <div className={"App"} >
       <h3>Button</h3>
-      <div>outlined button</div>
-      <Button prefixIcon={<BsPlus />} type={"outlined"} label={"Translate"} style={{ marginBottom: 20 }} />
-      <div>secondary button</div>
-      <Button prefixIcon={<BsPlus />} type={"secondary"} label={"Translate"} style={{ marginBottom: 20 }} />
-      <div>primary button</div>
-      <Button prefixIcon={<BsPlus />} type={"primary"} label={"Translate"} style={{ marginBottom: 20 }} />
-      <div>block button (width === 100%)</div>
-      <Button block suffixIcon={<BsPlus />} />
-      <div>disabled button </div>
-      <Button disabled label={"Disabled"} />
+      <div className={"Row"} style={{ display: "flex", flexDirection: "column" }}>
+        <Card title={"Different types of buttons"}>
+          <div>primary button</div>
+          <Button type={"primary"} label={"Translate"} />
+          <div>secondary button</div>
+          <Button type={"secondary"} label={"Translate"} />
+          <div>outlined button / tertiary button</div>
+          <Button type={"outlined"} label={"Translate"} />
+        </Card>
+
+        <Card title={"Buttons with icons"}>
+          <div>primary button</div>
+          <Button prefixIcon={<BsPlus />} type={"primary"} label={"Translate"} style={{ marginBottom: 20 }} />
+          <div>secondary button</div>
+          <Button prefixIcon={<BsPlus />} type={"secondary"} label={"Translate"} style={{ marginBottom: 20 }} />
+          <div>outlined button / tertiary button</div>
+          <Button prefixIcon={<BsPlus />} type={"outlined"} label={"Translate"} style={{ marginBottom: 20 }} />
+        </Card>
+
+        <Card title={"Block buttons (width fits its parent node)"}>
+          <div>block button (width === 100%)</div>
+          <Button block suffixIcon={<BsPlus />} />
+        </Card>
+
+        <Card title={"Disabled button"}>
+          <div>disabled button </div>
+          <Button disabled label={"Disabled"} />
+        </Card>
+      </div>
+
       <h3>Switch</h3>
-      <Switch />
+
+      <div className={"Row"} style={{ display: "flex", flexDirection: "column" }}>
+        <Card title={"Switch"}>
+          <div>Basic</div>
+          <Switch />
+        </Card>
+
+        <Card title={"Trigger an action when toggled."}>
+          <Switch onToggle={() => alert("Toggled!")}/>
+        </Card>
+      </div>
+
       <h3>TextField</h3>
       <div style={{ display: "flex", alignItems: "flex-start" }}>
         <TextField />
         <TextField maxLength={24} style={{ marginLeft: 20 }} />
         <TextField style={{ marginLeft: 20 }} prefixIcon={<BsPerson />} />
         <TextField style={{ marginLeft: 20 }} processing prefixIcon={<BsPerson />} />
+        <Card title={"Inbound translation processing"}>
+          <TextField textArea maxLength={100} processing />
+        </Card>
         <TextField style={{ marginLeft: 20 }} suffixIcon={<BsClock />} />
         <TextField style={{ marginLeft: 20 }} textArea maxLength={12} />
-        <TextField style={{ marginLeft: 20 }} textArea maxLength={100} />
+
         <TextField style={{ marginLeft: 20 }} textArea placeholder={"Drag and drop a file here."} allowDrop />
       </div>
       <h3>Alert</h3>
@@ -116,7 +150,9 @@ export default function App() {
       </Card>
       <h3>Progress</h3>
       <Progress value={12} style={{ marginBottom: 20 }} />
-      <Progress value={progressValue} label />
+      <Progress value={progressValue} label style={{ marginBottom: 20 }} />
+      <Progress value={62} status={"finished"} label style={{ marginBottom: 20 }} />
+      <Progress value={62} status={"paused"} label />
     </div >
   );
 }

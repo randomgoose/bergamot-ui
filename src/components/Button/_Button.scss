@@ -11,6 +11,8 @@
   background: $color-teal-6;
   color: $color-white;
   transition: all 0.2s;
+  width: fit-content;
+  height: fit-content;
   
   &:hover {
     background: $color-teal-5;
