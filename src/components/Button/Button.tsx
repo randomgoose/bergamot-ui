@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactNode } from "react";
+import React, { Children, CSSProperties, ReactNode } from "react";
 import classNames from "classnames";
 
 export interface Props {
@@ -6,6 +6,7 @@ export interface Props {
   loading?: boolean;
   prefixIcon?: ReactNode;
   suffixIcon?: ReactNode;
+  children?: ReactNode;
   disabled?: boolean;
   label?: string;
   block?: boolean;
@@ -13,7 +14,7 @@ export interface Props {
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button = ({ type, prefixIcon, suffixIcon, label, disabled, block, style, onClick }: Props) => {
+const Button = ({ type, prefixIcon, suffixIcon, label, disabled, block, style, onClick, children }: Props) => {
 
   const classes = classNames({
     Button: "Button",
@@ -28,7 +29,7 @@ const Button = ({ type, prefixIcon, suffixIcon, label, disabled, block, style, o
             onClick={onClick}
             >
       { prefixIcon ? <span className={`Button__prefixIcon`}>{prefixIcon}</span> : null }
-      <span className={`Button__text`}>{label ? label : "Button"}</span>
+      <span className={`Button__text`}>{children ? children : label ? label : "Button"}</span>
       {suffixIcon ? <span className={`Button__suffixIcon`}>{suffixIcon}</span> : null }
     </button>
   );
