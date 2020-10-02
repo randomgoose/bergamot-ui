@@ -68,6 +68,7 @@ export default function App() {
   return (
     <div className={"App"} >
       <h1>Design Assets</h1>
+      <a href={"https://github.com/randomgoose/bergamot-ui"}>Github Repository</a>
       <h3>Button</h3>
       <div className={"Row"} style={{ display: "flex", flexDirection: "column" }}>
         <Card title={"Different types of buttons"}>
