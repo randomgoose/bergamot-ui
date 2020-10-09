@@ -1,23 +1,24 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, useEffect, useState } from "react";
 import classNames from "classnames";
 import { BsCheck, BsPause } from "react-icons/bs"
-import { finished } from "stream";
+import Props from "./interface";
 
-interface Props {
-    value: number;
-    label?: boolean;
-    style?: CSSProperties;
-    type?: "bar" | "ring";
-    status?: "processing" | "finished" | "paused";
-}
+const Progress = ({ value, label, style, type, status, onFinish }: Props) => {
 
-const Progress = ({ value, label, style, type, status }: Props) => {
+    useEffect(() => {
+        if (value >= 100 && onFinish) {
+            onFinish();
+        }
+    }, [value])
 
     const classes = classNames({
         Progress: "Progress",
         [`${type}`]: type,
         [`${status}`]: status
-    })
+    });
+
+    if (value > 100) value = 100;
+    if (value < 0) value = 0;
 
     return (
         <div className={classes} style={style}>
@@ -31,7 +32,8 @@ const Progress = ({ value, label, style, type, status }: Props) => {
 }
 
 Progress.defaultProps = {
-    type: "bar"
+    type: "bar",
+    value: 0
 }
 
 export default Progress;

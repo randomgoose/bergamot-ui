@@ -7,11 +7,15 @@ import Switch from "./components/Switch/Switch";
 import TextField from "./components/TextField/TextField";
 import Alert from "./components/Alert/Alert";
 import Checkbox from "./components/Checkbox/Checkbox";
-import { BsPerson, BsPlus, BsFillInfoCircleFill, BsXCircleFill, BsQuestionCircleFill, BsFlagFill, BsClock } from "react-icons/bs"
+import { BsPerson, BsPlus, BsFillInfoCircleFill, BsXCircleFill, BsQuestionCircleFill, BsFlagFill, BsClock, BsArrowRepeat, BsSoundwave, BsVolumeUpFill } from "react-icons/bs"
 import Radio from "./components/Radio/Radio";
 import Card from "./components/Card/Card";
 import Progress from "./components/Progress/Progress";
+<<<<<<< HEAD
 import Input from "./components/Input/Input";
+=======
+import ControlledProgress from "./components/Progress/demos/ControlledProgress";
+>>>>>>> fb1bed9dd5037e753c499273fcb77535617cd44a
 
 const baseColors = [
   {
@@ -67,6 +71,8 @@ export default function App() {
 
   return (
     <div className={"App"} >
+      <h1>Design Assets</h1>
+      <a href={"https://github.com/randomgoose/bergamot-ui"}>Github Repository</a>
       <h3>Button</h3>
       <div className={"Row"} style={{ display: "flex", flexDirection: "column" }}>
         <Card title={"Different types of buttons"}>
@@ -79,12 +85,11 @@ export default function App() {
         </Card>
 
         <Card title={"Buttons with icons"}>
-          <div>primary button</div>
-          <Button prefixIcon={<BsPlus />} type={"primary"} label={"Translate"} style={{ marginBottom: 20 }} />
-          <div>secondary button</div>
-          <Button prefixIcon={<BsPlus />} type={"secondary"} label={"Translate"} style={{ marginBottom: 20 }} />
+          <div>prefixIcon.</div>
+          <Button prefixIcon={<BsArrowRepeat />} type={"primary"} label={"Translate"} />
+          <div>suffixIcon</div>
+          <Button suffixIcon={<BsArrowRepeat />} type={"secondary"} label={"Translate"} />
           <div>outlined button / tertiary button</div>
-          <Button prefixIcon={<BsPlus />} type={"outlined"} label={"Translate"} style={{ marginBottom: 20 }} />
         </Card>
 
         <Card title={"Block buttons (width fits its parent node)"}>
@@ -101,54 +106,137 @@ export default function App() {
       <h3>Switch</h3>
 
       <div className={"Row"} style={{ display: "flex", flexDirection: "column" }}>
-        <Card title={"Switch"}>
-          <div>Basic</div>
+        <Card title={"Basic"}>
           <Switch />
         </Card>
 
         <Card title={"Trigger an action when toggled."}>
-          <Switch onToggle={() => alert("Toggled!")}/>
+          <Switch onToggle={() => alert("Toggled!")} />
         </Card>
       </div>
 
       <h3>TextField</h3>
-      <div style={{ display: "flex", alignItems: "flex-start" }}>
-        <TextField />
-        <TextField maxLength={24} style={{ marginLeft: 20 }} />
-        <TextField style={{ marginLeft: 20 }} prefixIcon={<BsPerson />} />
-        <TextField style={{ marginLeft: 20 }} processing prefixIcon={<BsPerson />} />
-        <Card title={"Inbound translation processing"}>
-          <TextField textArea maxLength={100} processing />
-        </Card>
-        <TextField style={{ marginLeft: 20 }} suffixIcon={<BsClock />} />
-        <TextField style={{ marginLeft: 20 }} textArea maxLength={12} />
 
-        <TextField style={{ marginLeft: 20 }} textArea placeholder={"Drag and drop a file here."} allowDrop />
+      <div className={"Row"} style={{ display: "flex", flexDirection: "column" }}>
+        <Card title={"Basic"}>
+          <TextField />
+        </Card>
+
+        <Card title={"Max length"}>
+          <TextField maxLength={24} />
+        </Card>
+
+        <Card title={"Allow clearance"}>
+          <TextField allowClear />
+        </Card>
+
+        <Card title={"Prefix Icon"}>
+          <TextField prefixIcon={<BsPerson />} />
+        </Card>
+
+        <Card title={"Suffix Icon"}>
+          <TextField suffixIcon={<BsClock />} />
+        </Card>
+
+        <Card title={"Textarea"}>
+          <TextField textArea maxLength={100} />
+        </Card>
+
+        <Card title={"Processing"}>
+          <TextField textArea processing />
+        </Card>
+
+        <Card title={"Drag and drop a file."}>
+          <TextField textArea placeholder={"Drag and drop a file here."} allowDrop />
+        </Card>
+
+      </div>
+
+      <div style={{ display: "flex", alignItems: "flex-start" }}>
+
+
       </div>
       <h3>Alert</h3>
-      <Alert closable prefixIcon={<BsFillInfoCircleFill />} info={"New NMT model installed."} />
-      <Alert closable prefixIcon={<BsXCircleFill />} info={"A fatal error."} status={"error"} />
-      <Alert closable prefixIcon={<BsFlagFill />} info={"The task has been done."} status={"success"} />
-      <Alert closable prefixIcon={<BsQuestionCircleFill />} info={"There's not enought disk space."} status={"warning"} />
+      <div className={"Row"} style={{ display: "flex", flexDirection: "column" }}>
+        <Card title={"Alert"}>
+          <Alert closable prefixIcon={<BsFillInfoCircleFill />} info={"New NMT model installed."} />
+          <Alert closable prefixIcon={<BsXCircleFill />} info={"A fatal error."} status={"error"} />
+          <Alert closable prefixIcon={<BsFlagFill />} info={"The task has been done."} status={"success"} />
+          <Alert closable prefixIcon={<BsQuestionCircleFill />} info={"There's not enought disk space."} status={"warning"} />
+        </Card>
+
+      </div>
       <h3>Checkbox</h3>
-      <Checkbox id={"checkbox1"} label={"English"} />
-      <Checkbox id={"checkbox2"} label={"Finnish"} />
-      <Checkbox id={"checkbox3"} label={"German"} />
+      <div className={"Row"} style={{ display: "flex", flexDirection: "column" }}>
+        <Card title={"Checkbox"}>
+          <Checkbox id={"checkbox1"} label={"English"} />
+          <Checkbox id={"checkbox2"} label={"Finnish"} />
+          <Checkbox id={"checkbox3"} label={"German"} />
+        </Card>
+      </div>
+
       <h3>Radio</h3>
-      <Radio id={"radio1"} />
-      <Radio id={"radio2"} />
-      <Radio id={"radio3"} />
-      <h3>Palette</h3>
-      <Palette />
+      <div className={"Row"} style={{ display: "flex", flexDirection: "column" }}>
+        <Card title={"Radio"}>
+          <Radio id={"radio1"} />
+          <Radio id={"radio2"} />
+          <Radio id={"radio3"} />
+        </Card>
+      </div>
+
       <h3>Card</h3>
-      <Card actions={[
-        <Button />
-      ]}>
+      <div className={"Row"} style={{ display: "flex", flexDirection: "column" }}>
+        <Card actions={[
+          <Button label={"Done"} />
+        ]} title={"ambience"} style={{ width: "50%", alignSelf: "center" }}>
+          <span><strong>noun</strong> [S]</span>
+          <br />
+          <span style={{ display: "flex", alignItems: "center" }}><strong>UK</strong><BsVolumeUpFill style={{ marginLeft: 4 }} /></span>
+        the character of a place or the quality it seems to have:
+        <ul>
+            <li>Despite being a busy city, Dublin has the ambience of a country town.</li>
+          </ul>
+
+        </Card>
+
+        <Card actions={[
+          <Button label={"Done"} />
+        ]} title={"ambience"} style={{ width: "50%", alignSelf: "center" }} borderless>
+          <span><strong>noun</strong> [S]</span>
+          <br />
+          <span style={{ display: "flex", alignItems: "center" }}><strong>UK</strong><BsVolumeUpFill style={{ marginLeft: 4 }} /></span>
+        the character of a place or the quality it seems to have:
+        <ul>
+            <li>Despite being a busy city, Dublin has the ambience of a country town.</li>
+          </ul>
+
+        </Card>
+      </div>
+      <h3>Progress</h3>
+      <div className={"Row"} style={{ display: "flex", flexDirection: "column" }}>
+        <Card title={"Progress bar"}>
+          <ControlledProgress value={50} />
+        </Card>
+        <Card title={"Animated progress bar"}>
+          <Progress value={progressValue} label />
+        </Card>
+        <Card title={"Different statuses of progress bars"}>
+          <Progress value={62} status={"finished"} label style={{ marginBottom: 20 }} />
+          <Progress value={62} status={"paused"} label />
+
+        </Card>
+
+        <Card title={"Trigger an action when finished."}>
+          Increment the value to 100%.
+          <ControlledProgress value={90} onFinish={() => alert("finished")} />
+        </Card>
+      </div>
+
+      <h3>Palette</h3>
+      <Card title={"Palette"} style={{width: "100%"}}>
+      <Palette />
       </Card>
-      <Card style={{ marginLeft: 20 }} borderless actions={[
-        <Button />
-      ]}>
-      </Card>
+<<<<<<< HEAD
       <h3>Progress</h3>
       <Progress value={12} style={{ marginBottom: 20 }} />
       <Progress value={progressValue} label style={{ marginBottom: 20 }} />
@@ -156,6 +244,8 @@ export default function App() {
       <Progress value={62} status={"paused"} label />
       <h3>Input</h3>
       <Input></Input>
+=======
+>>>>>>> fb1bed9dd5037e753c499273fcb77535617cd44a
     </div >
   );
 }

@@ -18,9 +18,10 @@ const Card = ({ children, actions, title, size, borderless, style }: Props) => {
 
     return (
         <div className={classes} style={style}>
-            <div className={"Card__header"}>
+            { title ? <div className={"Card__header"}>
                 <h3 className={"Card__title"}>{title}</h3>
-            </div>
+            </div> : null
+            }
             <div className={"Card__body"}>
                 {children}
             </div>

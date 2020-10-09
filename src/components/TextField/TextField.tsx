@@ -1,6 +1,6 @@
 import React, { CSSProperties, ReactNode } from "react";
 import classNames from "classnames";
-import { BsPerson } from "react-icons/bs";
+import { BsPerson, BsXCircleFill } from "react-icons/bs";
 
 interface Props {
     processing?: boolean,
@@ -10,10 +10,11 @@ interface Props {
     suffixIcon?: ReactNode,
     maxLength?: number,
     placeholder?: string,
-    allowDrop?: boolean
+    allowDrop?: boolean,
+    allowClear?: boolean
 }
 
-const TextField = ({ processing, style, prefixIcon, suffixIcon, textArea, maxLength, placeholder, allowDrop }: Props) => {
+const TextField = ({ processing, style, prefixIcon, suffixIcon, textArea, maxLength, placeholder, allowDrop, allowClear }: Props) => {
     const [value, setValue] = React.useState("");
     const [itemOver, setItemOver] = React.useState(false);
 
@@ -27,8 +28,9 @@ const TextField = ({ processing, style, prefixIcon, suffixIcon, textArea, maxLen
         maxLengthSet: maxLength,
         placeholder: placeholder,
         itemOver: itemOver,
-        allowDrop: allowDrop
-    })
+        allowDrop: allowDrop,
+        allowClear: allowClear
+    });
 
     const changeHandler = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         setValue(e.target.value);
@@ -44,6 +46,10 @@ const TextField = ({ processing, style, prefixIcon, suffixIcon, textArea, maxLen
 
     const dropHandler = (e: React.DragEvent<HTMLDivElement>) => {
         if (allowDrop) setItemOver(false);
+    }
+
+    const clear = (e: React.MouseEvent<HTMLSpanElement>) => {
+        setValue("");
     }
 
 
@@ -70,6 +76,7 @@ const TextField = ({ processing, style, prefixIcon, suffixIcon, textArea, maxLen
                 <span className={"TextField__suffixIcon"}>{suffixIcon}</span> :
                 null}
             { maxLength ? <label className={"TextField__maxLength"}>{`${value.length}/`}<span style={{ color: "gray" }}>{`${maxLength}`}</span></label> : null}
+            { allowClear ? value.length > 0 ? <span className={"TextField__clearIcon"} onClick={clear}><BsXCircleFill /></span> : null : null}
         </div>
 
     )

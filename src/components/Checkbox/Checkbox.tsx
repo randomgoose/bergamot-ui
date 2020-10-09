@@ -16,7 +16,7 @@ const Checkbox = ({ id, label }: Props) => {
 
     return (
         <span className={"Checkbox"}>
-            <input type={"checkbox"} id={id} name={"checkbox"} checked={checked}></input>
+            <input type={"checkbox"} id={id} name={"language"} checked={checked}></input>
             <span onClick={toggle} className={"Checkbox__checkmark"}><BsCheck /></span>
             {label ? <label onClick={toggle} htmlFor={id}>{label}</label> : null}
         </span>
