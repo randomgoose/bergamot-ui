@@ -1,13 +1,14 @@
-import React, { useState, MouseEvent, CSSProperties } from "react";
+import React, { useState, MouseEvent, CSSProperties, ReactNode } from "react";
 import classNames from "classnames";
 
 export interface Props {
     style?: CSSProperties;
     disabled?: boolean;
     onToggle?: () => void;
+    icon?: ReactNode;
 }
 
-const Switch = ({disabled, onToggle}: Props) => {
+const Switch = ({disabled, onToggle, icon}: Props) => {
     const [checked, setChecked] = useState(false);
 
 
@@ -26,7 +27,9 @@ const Switch = ({disabled, onToggle}: Props) => {
 
     return (
         <button className={classes} onClick={toggle}>
-            <div className={`Switch__slider`}></div>
+            <div className={`Switch__slider`}>
+                {icon ? <span className={"Switch__icon"}>{icon}</span> : null}
+            </div>
         </button>
     )
 }
