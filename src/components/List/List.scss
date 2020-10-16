@@ -2,6 +2,12 @@
     border: 1px solid $color-neutral-6;
     border-radius: 2px;
     overflow: hidden;
+    width: 100%;
+    height: fit-content;
+
+    &.borderless {
+        border: none;
+    }
 
     &__header {
         padding: 12px 12px;
@@ -23,6 +29,8 @@
         padding: 12px 12px;
         position: relative;
         display: flex;
+        align-items: center;
+        width: 100%;
 
         &:not(:last-child)::after {
             content: "";
@@ -43,13 +51,12 @@
             justify-content: center;
             align-items: center;
             margin-right: 8px;
-            color: $color-neutral-11;
+            color: $color-neutral-9;
         }
 
         &__action {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            position: absolute;
+            right: 8px;
         }
     }
 }

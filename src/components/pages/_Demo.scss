@@ -1,0 +1,65 @@
+.BergamotApp {
+    width: 320px;
+    height: 600px;
+    background-color: $color-neutral-3;
+    position: relative;
+    color: $color-neutral-11;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid $color-neutral-5;
+    box-shadow: 0 8px 20px rgba($color-neutral-13, .1);
+
+    & input {
+        border: none;
+        outline: none;
+        background-color: $color-neutral-2;
+        border-bottom: 1px solid $color-neutral-5;
+
+        &:hover, &:focus {
+            border: none;
+            border-bottom: 1px solid $color-neutral-5;
+            box-shadow: none;
+        }
+    }
+
+    &__languageSwitcher {
+        position: relative;
+        background: $color-neutral-2;
+
+        &::after {
+            content: "";
+            display: "inline-block";
+            width: 100%;
+            height: 1px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: $color-neutral-5;
+        }
+    }
+
+    &__footer {
+        position: absolute;
+        width: 100%;
+        bottom: 0px;
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 16px;
+        
+        a {
+            color: $color-neutral-7;
+            text-decoration: none;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            justify-self: center;
+            width: 90%;
+            height: 1px;
+            position: absolute;
+            background: $color-neutral-5;
+        }
+    }
+}

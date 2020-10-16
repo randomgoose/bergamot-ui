@@ -1,19 +1,31 @@
 import React from "react";
-import { BsArrowRepeat, BsLock, BsLockFill, BsPersonFill } from "react-icons/bs";
-import Button from "../../Button/Button";
+import { BsChevronRight, BsGear, BsLightningFill, BsLockFill, BsApp } from "react-icons/bs";
+import Switch from "../../Switch/Switch";
 
 export const data = [
     {
-        text: "Item1",
+        text: "Translate own text",
         icon: <BsLockFill />,
-        action: <Button label={"Go"} />
+        action: <BsChevronRight />
     },
     {
-        text: "Item2",
-        icon: <BsArrowRepeat />
+        text: "Module Management",
+        icon: <BsApp />,
+        action: <BsChevronRight />
     },
     {
-        text: "Item3",
-        icon: <BsPersonFill />
+        text: "Options",
+        icon: <BsGear />,
+        action: <BsChevronRight />
+    },
+    {
+        text: "Always translate German",
+        icon: <BsLightningFill />,
+        action: <Switch />
+    },
+    {
+        text: "Show quality estimation",
+        icon: <BsLightningFill />,
+        action: <Switch />
     }
 ];

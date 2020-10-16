@@ -1,0 +1,89 @@
+.LanguageSwitcher {
+    display: flex;
+    justify-content: center;
+    padding: 48px;
+    font-size: 24px;
+    color: $color-neutral-5;
+
+    & > * {
+        margin: 10px;
+    }
+
+    & span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__sourceLanguage {
+        cursor: pointer;
+        transition: all .2s;
+        position: relative;
+
+        &::before {
+            content:"Source";
+            font-weight: bold;
+            color: $color-neutral-5;
+            font-size: 12px;
+            display: inline-block;
+            position: absolute;
+            top: -12px;
+            left: 0;
+        }
+    }
+
+    &__targetLanguage {
+        cursor: pointer;
+        position: relative;
+
+        & select {
+            display: none;
+        }
+
+        &::before {
+            content:"Target";
+            font-weight: bold;
+            color: $color-neutral-5;
+            font-size: 12px;
+            display: inline-block;
+            position: absolute;
+            top: -12px;
+            left: 0;
+        }
+    }
+
+    &__select {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 4px;
+        font-size: 12px;
+        padding: 4px;
+        border-radius: 50%;
+        transition: all .2s;
+
+        &:hover {
+            background-color: $color-neutral-4;
+        }
+
+        & svg {
+            stroke-width: 2px;
+        }
+    }
+
+    &.source {
+        .LanguageSwitcher__sourceLanguage {
+            color: $color-neutral-11;
+        }
+    }
+
+    &.target {
+        .LanguageSwitcher__targetLanguage {
+            color: $color-neutral-11;
+        }
+
+        .LanguageSwitcher__select {
+            color: $color-neutral-7;
+        }
+    }
+}

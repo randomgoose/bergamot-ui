@@ -26,7 +26,6 @@ const TextField = ({ processing, style, prefixIcon, suffixIcon, textArea, maxLen
         withSuffixIcon: suffixIcon,
         textArea: textArea,
         maxLengthSet: maxLength,
-        placeholder: placeholder,
         itemOver: itemOver,
         allowDrop: allowDrop,
         allowClear: allowClear
@@ -66,7 +65,7 @@ const TextField = ({ processing, style, prefixIcon, suffixIcon, textArea, maxLen
                     value={value}
                 /> :
                 <input
-                    placeholder={"Please type in..."}
+                    placeholder={placeholder ? placeholder : "Please type in something..."}
                     maxLength={maxLength}
                     onChange={changeHandler}
                     value={value}

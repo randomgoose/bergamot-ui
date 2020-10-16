@@ -1,15 +1,22 @@
 import React, { CSSProperties } from "react";
 import Item from "./Item";
 import { Props as ItemProps } from "./IItem";
+import classNames from "classnames";
 
 interface Props {
     style?: CSSProperties;
     itemStyle?: CSSProperties;
     header?: string;
     data: ItemProps[];
+    borderless?: boolean;
 }
 
-const List = ({ style, itemStyle, header, data }: Props) => {
+const List = ({ style, itemStyle, header, data, borderless }: Props) => {
+
+    const classes = classNames({
+        List: "List",
+        borderless: borderless
+    })
 
     const listItems = data.map(i => {
         const props = i;
@@ -17,7 +24,7 @@ const List = ({ style, itemStyle, header, data }: Props) => {
     })
 
     return (
-        <div className={"List"} style={style}>
+        <div className={classes} style={style}>
             { header ? <div className={"List__header"}>{header}</div> : null}
             { listItems }
         </div>
