@@ -32,7 +32,7 @@
         align-items: center;
         width: 100%;
 
-        &:not(:last-child)::after {
+        &::after {
             content: "";
             position: absolute;
             height: 1px;
