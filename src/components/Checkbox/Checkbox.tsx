@@ -1,5 +1,4 @@
 import React from "react";
-import classNames from "classnames";
 import { BsCheck } from "react-icons/bs";
 
 interface Props {

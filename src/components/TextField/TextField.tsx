@@ -1,17 +1,19 @@
 import React, { CSSProperties, ReactNode } from "react";
 import classNames from "classnames";
-import { BsPerson, BsXCircleFill } from "react-icons/bs";
+import { BsXCircleFill } from "react-icons/bs";
 
 interface Props {
-    processing?: boolean,
-    style?: CSSProperties,
-    textArea?: boolean,
-    prefixIcon?: ReactNode,
-    suffixIcon?: ReactNode,
-    maxLength?: number,
-    placeholder?: string,
-    allowDrop?: boolean,
-    allowClear?: boolean
+    processing?: boolean;
+    style?: CSSProperties;
+    textArea?: boolean;
+    prefixIcon?: ReactNode;
+    suffixIcon?: ReactNode;
+    maxLength?: number;
+    placeholder?: string;
+    allowDrop?: boolean;
+    allowClear?: boolean;
+    // onChange?: () => void;
+    value?: string;
 }
 
 const TextField = ({ processing, style, prefixIcon, suffixIcon, textArea, maxLength, placeholder, allowDrop, allowClear }: Props) => {

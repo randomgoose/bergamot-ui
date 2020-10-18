@@ -1,57 +1,45 @@
 import React from "react";
-import { generate } from "@ant-design/colors";
 import Button from "../Button/Button";
 import Palette from "../Palette/Palette";
 import Switch from "../Switch/Switch";
 import TextField from "../TextField/TextField";
 import Alert from "../Alert/Alert";
 import Checkbox from "../Checkbox/Checkbox";
-import { BsPerson, BsPlus, BsFillInfoCircleFill, BsXCircleFill, BsQuestionCircleFill, BsFlagFill, BsClock, BsArrowRepeat, BsSoundwave, BsVolumeUpFill, BsToggleOff, BsToggles, BsPower } from "react-icons/bs"
+import { BsPerson, BsPlus, BsGear, BsFillInfoCircleFill, BsXCircleFill, BsQuestionCircleFill, BsFlagFill, BsClock, BsArrowRepeat, BsLockFill, BsApp, BsChevronRight, BsLightningFill, BsVolumeUpFill, BsPower } from "react-icons/bs"
 import Radio from "../Radio/Radio";
 import Card from "../Card/Card";
 import Progress from "../Progress/Progress";
 import ControlledProgress from "../Progress/demos/ControlledProgress";
 import Table from "../Table/Table";
 import List from "../List/List";
-import { data } from "./data/listData";
 
-const baseColors = [
+export const data = [
   {
-    name: "Rose Red / Error, Danger",
-    hex: "FF033E"
+      text: "Translate own text",
+      icon: <BsLockFill />,
+      action: <BsChevronRight />
   },
   {
-    name: "Gold",
-    hex: "FFD700"
+      text: "Module Management",
+      icon: <BsApp />,
+      action: <BsChevronRight />
   },
   {
-    name: "Violet",
-    hex: "8F00FF"
+      text: "Options",
+      icon: <BsGear />,
+      action: <BsChevronRight />
   },
   {
-    name: "Emerald Green / Success",
-    hex: "50C878"
+      text: "Always translate German",
+      icon: <BsLightningFill />,
+      action: <Switch />
   },
   {
-    name: "Bright Orange / Warning",
-    hex: "FFA500"
-  },
-  {
-    name: "Teal",
-    hex: "30D5C8"
-  },
-  {
-    name: "Royal Blue / Information",
-    hex: "4169E1"
+      text: "Show quality estimation",
+      icon: <BsLightningFill />,
+      action: <Switch />
   }
 ];
-
-const generatedColors = baseColors.map((hue) => {
-  return {
-    name: hue.name,
-    colors: generate(hue.hex)
-  };
-});
 
 export default function Components() {
 

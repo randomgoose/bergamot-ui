@@ -19,7 +19,7 @@ const LanguageSwitcher = () => {
         [`${language}`]: language
     })
 
-    const languages = languageList.map(i => <option value={i}>{i}</option>);
+    const languages = languageList.map(i => <option value={i} key={Math.random()}>{i}</option>);
 
     const switchLanguage = (e?: React.MouseEvent<HTMLSpanElement>) => {
         return (language: string) => setLanguage(language);

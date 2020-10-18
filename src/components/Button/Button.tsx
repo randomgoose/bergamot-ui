@@ -1,4 +1,4 @@
-import React, { Children, CSSProperties, ReactNode } from "react";
+import React, { CSSProperties, ReactNode } from "react";
 import classNames from "classnames";
 
 export interface Props {

@@ -1,4 +1,4 @@
-import React, { CSSProperties, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import classNames from "classnames";
 import { BsCheck, BsPause } from "react-icons/bs"
 import Props from "./interface";
@@ -9,7 +9,7 @@ const Progress = ({ value, label, style, type, status, onFinish }: Props) => {
         if (value >= 100 && onFinish) {
             onFinish();
         }
-    }, [value])
+    }, [value, onFinish])
 
     const classes = classNames({
         Progress: "Progress",

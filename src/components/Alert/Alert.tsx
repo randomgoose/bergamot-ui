@@ -1,6 +1,6 @@
 import React, { CSSProperties, ReactNode, useState } from "react";
 import classNames from "classnames";
-import { BsX, BsFillInfoCircleFill } from "react-icons/bs";
+import { BsX } from "react-icons/bs";
 
 
 export interface Props {
@@ -28,7 +28,7 @@ const Alert = ({ status, prefixIcon, info, style, closable, closeButton }: Props
 
     return (
         visible ?
-        <div className={classes} style={{ marginTop: 20 }}>
+        <div className={classes}>
             <span className={"Alert__prefixIcon"}>{prefixIcon}</span>
             <span className={"Alert__text"}>{info}</span>
             <span className={"Alert__closeButton"} onClick={close}>{closable ? closeButton ? closeButton : <BsX /> : null }</span>

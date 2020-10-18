@@ -1,8 +1,16 @@
 import React from "react";
+import classNames from "classnames";
 
 const Menu = () => {
+
+    const classes = classNames({
+        Menu: "Menu"
+    });
+
     return (
-        <div></div>
+        <div className={classes}>
+
+        </div>
     )
 }
 

@@ -1,3 +1,15 @@
+.Demo {
+    display: flex;
+
+    & .Text {
+        flex: 1;
+        border: 1px solid $color-neutral-5;
+        margin-left: 120px;
+        padding: 40px 40px;
+        border-radius: 2px;
+    }
+}
+
 .BergamotApp {
     width: 320px;
     height: 600px;
@@ -7,7 +19,13 @@
     font-size: 14px;
     border-radius: 4px;
     border: 1px solid $color-neutral-5;
-    box-shadow: 0 8px 20px rgba($color-neutral-13, .1);
+    box-shadow: 0 8px 20px rgba($color-neutral-13, 0.1);
+    overflow: scroll;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+        display: none;
+      }
 
     & input {
         border: none;
@@ -15,7 +33,8 @@
         background-color: $color-neutral-2;
         border-bottom: 1px solid $color-neutral-5;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             border: none;
             border-bottom: 1px solid $color-neutral-5;
             box-shadow: none;
@@ -45,7 +64,7 @@
         display: flex;
         justify-content: space-between;
         padding: 12px 16px;
-        
+
         a {
             color: $color-neutral-7;
             text-decoration: none;
@@ -60,6 +79,63 @@
             height: 1px;
             position: absolute;
             background: $color-neutral-5;
+        }
+    }
+}
+
+.item-enter {
+    opacity: 0;
+    transform: translateX(-100px);
+}
+.item-enter-active {
+    opacity: 1;
+    transition: all 500ms ease-in;
+    transform: translateX(0px);
+}
+.item-exit {
+    opacity: 1;
+}
+.item-exit-active {
+    opacity: 0;
+    transition: all 500ms ease-in;
+}
+
+.Translate {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &__body {
+        height: 100%;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__title {
+        margin-bottom: 8px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    &__originText {
+        height: 100%;
+        margin-bottom: 16px;
+
+        & textarea {
+            height: 240px;
+            resize: none;
+        }
+    }
+
+    &__targetText {
+        height: 100%;
+
+        & textarea {
+            height: 240px;
+            resize: none;
         }
     }
 }

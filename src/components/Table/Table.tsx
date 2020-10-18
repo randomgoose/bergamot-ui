@@ -1,6 +1,5 @@
 import React from "react";
 import Props from "./interface";
-import Cell from "./Cell";
 
 const Table = (props: Props) => {
 
