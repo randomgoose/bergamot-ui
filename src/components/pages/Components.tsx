@@ -12,32 +12,33 @@ import Progress from "../Progress/Progress";
 import ControlledProgress from "../Progress/demos/ControlledProgress";
 import Table from "../Table/Table";
 import List from "../List/List";
+import Menu from "../Menu/Menu";
 
 export const data = [
   {
-      text: "Translate own text",
-      icon: <BsLockFill />,
-      action: <BsChevronRight />
+    text: "Translate own text",
+    icon: <BsLockFill />,
+    action: <BsChevronRight />
   },
   {
-      text: "Module Management",
-      icon: <BsApp />,
-      action: <BsChevronRight />
+    text: "Module Management",
+    icon: <BsApp />,
+    action: <BsChevronRight />
   },
   {
-      text: "Options",
-      icon: <BsGear />,
-      action: <BsChevronRight />
+    text: "Options",
+    icon: <BsGear />,
+    action: <BsChevronRight />
   },
   {
-      text: "Always translate German",
-      icon: <BsLightningFill />,
-      action: <Switch />
+    text: "Always translate German",
+    icon: <BsLightningFill />,
+    action: <Switch />
   },
   {
-      text: "Show quality estimation",
-      icon: <BsLightningFill />,
-      action: <Switch />
+    text: "Show quality estimation",
+    icon: <BsLightningFill />,
+    action: <Switch />
   }
 ];
 
@@ -226,13 +227,20 @@ export default function Components() {
         <Card title={"List"}>
           <List header={"Features"} data={
             data
-          }/>
+          } />
         </Card>
       </div>
 
       <h3>Palette</h3>
       <Card title={"Palette"} style={{ width: "100%" }}>
         <Palette />
+      </Card>
+
+      <h3>Menu</h3>
+      <Card title={"Menu"} style={{ width: "100%" }}>
+        <Menu>
+          <Button label={"Button"}/>
+        </Menu>
       </Card>
 
       <Table defaultData={{ name: "Lee" }} />

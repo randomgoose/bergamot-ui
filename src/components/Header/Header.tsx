@@ -1,7 +1,7 @@
 import * as React from "react";
-import { BsChevronLeft } from "react-icons/bs"
 import Icon from "../Icon/Icon";
 import { useHistory } from "react-router-dom";
+import { BiChevronLeft } from "react-icons/bi";
 
 interface Props {
     text?: string
@@ -18,7 +18,7 @@ const Header = ({ text, allowBack, extra }: Props) => {
 
     return (
         <div className={"Header"}>
-            { allowBack ? <a onClick={clickHandler}><Icon className={"Header__back"} icon={<BsChevronLeft />} /></a> : null}
+            { allowBack ? <a onClick={clickHandler}><Icon className={"Header__back"} icon={<BiChevronLeft />} /></a> : null}
             { text ? text : "Bergamot"}
             <span className={"Header__extra"}>{extra ? extra : null}</span>
         </div>

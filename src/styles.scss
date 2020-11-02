@@ -14,26 +14,37 @@
   }
 }
 
+.router-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
 .fade-enter {
+  height: 100%;
+  width: 100%;
   opacity: 0;
-  transform: translateX(100%);
+  transition: all 3000ms;
 }
 
 .fade-enter-active {
+  height: 100%;
+  width: 100%;
   opacity: 1;
-  transform: translateX(0);
-  transition: all 500ms;
+  transition: all 3000ms;
 }
 
 .fade-exit {
+  height: 100%;
+  width: 100%;
   opacity: 1;
-  transform: translateX(0);
+  transition: all 3000ms;
 }
 
 .fade-exit-active {
+  height: 100%;
+  width: 100%;
   opacity: 0;
-  transform: translateX(-100%);
-  transition: all 500ms;
+  transition: all 3000ms;
 }
 
 
@@ -55,3 +66,6 @@
 @import "./components/LanguageSwitcher/LanguageSwitcher";
 @import "./components/Header/Header";
 @import "./components/Icon/Icon";
+@import "./components/QualityEstimationContainer/QualityEstimationContainer";
+@import "./components/InputBox/InputBox";
+@import "./components/Menu/Menu";

@@ -1,12 +1,12 @@
 .Header {
     text-align: center;
-    padding: 8px;
+    padding: 12px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    // position: absolute;
+
     & a {
         display: flex;
         justify-content: center;
@@ -28,6 +28,7 @@
     &__back {
         position: absolute;
         left: 8px;
+        display: flex;
     }
 
     &__extra {

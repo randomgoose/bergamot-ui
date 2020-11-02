@@ -5,14 +5,13 @@
     border-radius: 200px;
     width: 44px;
     height: 24px;
-    padding: 4px;
     display: flex;
     transition: all .2s;
     cursor: pointer;
     outline: none;
 
     &:hover {
-        box-shadow: 0 0 0 2px $color-teal-3;
+        box-shadow: 0 0 0 2px $color-neutral-3;
     }
     
     &__slider {
@@ -25,9 +24,15 @@
         width: 16px;
         border-radius: 50%;
         transition: all .2s;
+        transition-property: left, right, width, box-shadow;
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &:active {
+            width: 20px;
+            border-radius: 1000px;
+        }
     }
 
     &__icon {
@@ -44,6 +49,13 @@
 
     &.checked {
         background: $color-teal-6;
+
+        & .Switch__slider {
+        }
+
+        &:hover {
+            box-shadow: 0 0 0 2px $color-teal-3;
+        }
     }
 
     &.checked &__icon {
@@ -52,6 +64,11 @@
 
     &.checked &__slider {
         left: 22px;
+
+        &:active {
+            left: 18px;
+            border-radius: 1000px;
+        }
     }
 
     &:hover &__slider{

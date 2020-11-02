@@ -1,6 +1,7 @@
 import * as React from "react";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 import { BsChevronRight, BsLockFill, BsGear, BsLightningFill, BsApp } from "react-icons/bs";
+import { BiChevronRight, BiBox, BiShield, BiAdjust, BiSlider, BiAnalyse } from "react-icons/bi";
 import Switch from "../Switch/Switch";
 import List from "../List/List";
 import TextField from "../TextField/TextField";
@@ -8,49 +9,58 @@ import logo from "../../images/logo.png";
 import Header from "../Header/Header";
 import { Route, Switch as ReactSwitch, Link, useRouteMatch, withRouter } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { Translator } from "../../simulator/Translator";
+import InputBox from "../InputBox/InputBox";
 
-export const data = [
-    {
-        text: "Translate own text",
-        icon: <BsLockFill />,
-        action: <BsChevronRight />,
-        route: "translate"
-    },
-    {
-        text: "Module Management",
-        icon: <BsApp />,
-        action: <BsChevronRight />
-    },
-    {
-        text: "Options",
-        icon: <BsGear />,
-        action: <BsChevronRight />
-    },
-    {
-        text: "Always translate German",
-        icon: <BsLightningFill />,
-        action: <Switch />
-    },
-    {
-        text: "Show quality estimation",
-        icon: <BsLightningFill />,
-        action: <Switch />
-    }
-];
 
-const items = data.map(i => {
-    if (i.route) return <Link to={`demo/${i.route}`}><List.Item key={Math.random()} text={i.text} icon={i.icon} action={i.action} /></Link>
-    else return <List.Item key={Math.random()} text={i.text} icon={i.icon} action={i.action} />
-})
+const translator = new Translator("English", "Czech");
+translator.setDelay(7000);
 
 
 const Home = () => {
+    const [language, setLanguage] = React.useState("Czech");
+    const [status, setStatus] = React.useState("origin");
+
+    const data = [
+        {
+            text: "Translate own text",
+            icon: <BiAnalyse />,
+            action: <BiChevronRight />,
+            route: "translate"
+        },
+        {
+            text: "Module Management",
+            icon: <BiBox />,
+            action: <BiChevronRight />
+        },
+        {
+            text: "Options",
+            icon: <BiSlider />,
+            action: <BiChevronRight />
+        },
+        {
+            text: `Always translate ${language}`,
+            icon: <BsLightningFill />,
+            action: <Switch />
+        },
+        {
+            text: "Show quality estimation",
+            icon: <BsLightningFill />,
+            action: <Switch />
+        }
+    ];
+    
+    const items = data.map(i => {
+        if (i.route) return <Link to={`demo/${i.route}`}><List.Item key={Math.random()} text={i.text} icon={i.icon} action={i.action} /></Link>
+        else return <List.Item key={Math.random()} text={i.text} icon={i.icon} action={i.action} />
+    })
+
     return (
         <div className={"Home"}>
             <div>
-                <div className={"BergamotApp__header"}><TextField prefixIcon={<img alt={""} src={logo} width={16} />} placeholder={"Search something"} style={{ width: "100%" }} /></div>
+                <div className={"BergamotApp__header"} ><TextField allowClear prefixIcon={<img alt={""} src={logo} width={16} />} placeholder={"Search something"} style={{ width: "100%", borderRadius: "4px 4px 0 0" }} /></div>
                 <div className={"BergamotApp__languageSwitcher"}>
-                    <LanguageSwitcher />
+                    <LanguageSwitcher onSwitch={setLanguage}/>
                 </div>
                 <List style={{ cursor: "pointer" }} borderless>
                     {items}
@@ -67,6 +77,21 @@ const Home = () => {
 const Translate = () => {
 
     const [text, setText] = React.useState("");
+    const [translatedText, setTranslatedText] = React.useState("");
+    const [loading, setLoading] = React.useState(false);
+
+    React.useEffect(() => {
+        setLoading(true);
+        translator.translate(text).then((res => {
+                setTranslatedText(res); 
+                setLoading(false);
+        }));
+    }, [text])
+    
+
+    const changeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setText(e.target.value);
+    }
 
     return (
         <div className={"Translate"}>
@@ -74,11 +99,11 @@ const Translate = () => {
             <div className={"Translate__body"}>
                 <div className={"Translate__originText"}>
                     <div className={"Translate__title"}>Origin</div>
-                    <TextField textArea />
+                    <TextField textArea value={text} onChange={changeHandler} />
                 </div>
                 <div className={"Translate__targetText"}>
                     <div className={"Translate__title"}>Target</div>
-                    <TextField textArea />
+                    <TextField textArea value={translatedText} processing={loading}/>
                 </div>
             </div>
         </div>
@@ -94,35 +119,20 @@ const Landing = () => {
 }
 
 const Demo = () => {
-    const { path, url } = useRouteMatch();
+    const Routes = withRouter(({ location }) => {
+        return (
+                    <ReactSwitch location={location}>
+                        <Route exact path={"/demo"}>
+                            <Home />
+                        </Route>
+                        <Route exact path={`/demo/translate`}>
+                            <Translate />
+                        </Route>
+                    </ReactSwitch>
 
-    // const routes = <ReactSwitch>
-    //     <Route exact path={path}>
-    //         <Home />
-    //     </Route>
-    //     <Route exact path={`${path}/translate`}>
-    //         <Translate />
-    //     </Route>
-    // </ReactSwitch>
 
-    const Routes = withRouter(({ location }) => (
-        <TransitionGroup className={"router-wrapper"}>
-            <CSSTransition
-                timeout={5000}
-                classNames={'fade'}
-                key={location.pathname}
-            >
-                <ReactSwitch location={location}>
-                    <Route exact path={`${path}`}>
-                        <Home />
-                    </Route>
-                    <Route exact path={`${path}/translate`}>
-                        <Translate />
-                    </Route>
-                </ReactSwitch>
-            </CSSTransition>
-        </TransitionGroup>
-    ))
+        )
+    })
 
     // let currentPage;
     // switch (page) {
@@ -169,6 +179,7 @@ const Demo = () => {
                     as much about making ink or baking clay as they did about writing.
             </p>
             </div>
+            <InputBox />
         </div>
     )
 }

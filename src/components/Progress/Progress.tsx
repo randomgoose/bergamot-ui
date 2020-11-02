@@ -9,7 +9,7 @@ const Progress = ({ value, label, style, type, status, onFinish }: Props) => {
         if (value >= 100 && onFinish) {
             onFinish();
         }
-    }, [value, onFinish])
+    }, [value])
 
     const classes = classNames({
         Progress: "Progress",

@@ -4,6 +4,12 @@
     overflow: hidden;
     width: 100%;
     height: fit-content;
+    color: $color-neutral-9;
+
+    & a, a:visited, a:active, a:link {
+        text-decoration: none;
+        color: $color-neutral-9;
+    }
 
     &.borderless {
         border: none;
@@ -26,22 +32,23 @@
     }
 
     &Item {
-        padding: 12px 12px;
+        padding: 16px 16px;
         position: relative;
         display: flex;
         align-items: center;
         width: 100%;
+        transition: all .2s;
 
         &::after {
             content: "";
             position: absolute;
             height: 1px;
-            background: $color-neutral-5;
+            // background: $color-neutral-;
             bottom: 0;
             width: 100%;
             left: 0;
         }
-        
+
         &:hover {
             background: $color-neutral-2;
         }
