@@ -2,6 +2,7 @@ import * as React from "react";
 import LanguageSwitcher from "../components/LanguageSwitcher/LanguageSwitcher";
 import { BsGear, BsLightningFill } from "react-icons/bs";
 import { BiChevronRight, BiBox, BiSlider, BiAnalyse } from "react-icons/bi";
+import Menu from "../components/Menu/Menu";
 import Switch from "../components/Switch/Switch";
 import List from "../components/List/List";
 import TextField from "../components/TextField/TextField";
@@ -13,10 +14,31 @@ import InputBox from "../components/InputBox/InputBox";
 import { englishText, germanText } from "./data/text";
 import { useSelector, useDispatch } from "react-redux";
 import { TranslatorState, translatorSlice } from "../redux/store";
+import { BsChevronDown } from "react-icons/bs";
+import Options from "./Options";
+import Button from "../components/Button/Button";
 
 const translator = new Translator("English", "Czech");
 translator.setDelay(7000);
 
+const languageList = [
+    {
+        value: "english",
+        key: 0
+    },
+    {
+        value: "czech",
+        key: 1
+    },
+    {
+        value: "german",
+        key: 2
+    },
+    {
+        value: "french",
+        key: 3
+    }
+];
 
 const Home = () => {
     const inboundTranslationLanguage = useSelector((state: TranslatorState) => state.inboundTranslationLanguage);
@@ -38,7 +60,8 @@ const Home = () => {
         {
             text: "Options",
             icon: <BiSlider />,
-            action: <BiChevronRight />
+            action: <BiChevronRight />,
+            route: "options"
         },
         {
             text: `Always translate ${targetLanguage}`,
@@ -83,6 +106,9 @@ const Translate = () => {
     const [text, setText] = React.useState("");
     const [translatedText, setTranslatedText] = React.useState("");
     const [loading, setLoading] = React.useState(false);
+    const outboundSourceLanguage = useSelector((state: TranslatorState) => state.outboundSourceLanguage);
+    const outboundTargetLanguage = useSelector((state: TranslatorState) => state.outboundTargetLanguage);
+
 
     React.useEffect(() => {
         setLoading(true);
@@ -102,12 +128,37 @@ const Translate = () => {
             <Header allowBack extra={<BsGear />} />
             <div className={"Translate__body"}>
                 <div className={"Translate__originText"}>
-                    <div className={"Translate__title"}>Origin</div>
-                    <TextField textArea value={text} onChange={changeHandler} />
+                    <div className={"Translate__title"}>{`Origin: ${outboundSourceLanguage}`}
+                        <Menu list={languageList}>
+                            <span className={"LanguageSwitcher__select"}>
+                                <BsChevronDown />
+                            </span>
+                        </Menu></div>
+                    <TextField textArea value={text} onChange={changeHandler} allowDrop />
                 </div>
                 <div className={"Translate__targetText"}>
-                    <div className={"Translate__title"}>Target</div>
-                    <TextField textArea value={translatedText} processing={loading} />
+                    <div className={"Translate__title"} style={{display: "flex", justifyContent: "space-between"}}>
+                        <div style={{display: "flex"}}>
+                        {`Target: ${outboundTargetLanguage}`}
+                        <Menu list={languageList}>
+                            <span className={"LanguageSwitcher__select"}>
+                                <BsChevronDown />
+                            </span>
+                        </Menu>
+                        </div>
+                        <div style={{display: "flex", alignItems: "center"}}>
+                            <label style={{marginRight: 4}}>QE</label>
+                            <Switch />
+                        </div>
+                    </div>
+                    <TextField textArea value={translatedText} processing={loading} children={<Button label={"Copy to clipboard"} style={{
+                        position: "absolute",
+                        left: "50%",
+                        bottom: 16,
+                        transform: "translateX(-50%)",
+                        opacity: translatedText ? 1 : 0,
+                        transition: "all 0.6s"
+                    }}/>}/>
                 </div>
             </div>
         </div>
@@ -131,6 +182,9 @@ const Demo = () => {
                 </Route>
                 <Route exact path={`/demo/translate`}>
                     <Translate />
+                </Route>
+                <Route exact path={`/demo/options`}>
+                    <Options />
                 </Route>
             </ReactSwitch>
 

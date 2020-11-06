@@ -4,13 +4,17 @@ interface TranslationState {
     sourceLanguage: string;
     targetLanguage: string;
     inboundTranslationLanguage: "sourceLanguage" | "targetLanguage";
+    outboundSourceLanguage: string;
+    outboundTargetLanguage: string;
 }
 
 
 const initialState: TranslationState = {
     sourceLanguage: "english",
     targetLanguage: "german",
-    inboundTranslationLanguage: "sourceLanguage"
+    inboundTranslationLanguage: "sourceLanguage",
+    outboundSourceLanguage: "english",
+    outboundTargetLanguage: "german"
 }
 
 

@@ -17,6 +17,7 @@ interface Props {
     onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     defaultValue?: string;
     value?: string;
+    children?: React.ReactNode;
 }
 
 const TextField = ({ processing,
@@ -30,7 +31,8 @@ const TextField = ({ processing,
     allowClear,
     value,
     defaultValue,
-    onChange }: Props) => {
+    onChange,
+    children }: Props) => {
 
     const initialValue = value === undefined ? defaultValue : value;
 
@@ -79,18 +81,19 @@ const TextField = ({ processing,
 
     return (
         <div className={classes} onDragOver={dragOverHandler} onDragLeave={dragLeaveHandler} onDrop={dropHandler}>
+            { children }
             { prefixIcon ?
                 <span className={"TextField__prefixIcon"}>{prefixIcon}</span> :
                 null}
             { textArea ?
-                <InputBox style={style} maxLength={500}/>
-                // <textarea
-                //     ref={inputRef}
-                //     placeholder={placeholder ? placeholder : "Please type in something..."}
-                //     maxLength={maxLength}
-                //     onChange={value === undefined ? changeHandler : onChange}
-                //     value={value === undefined ? content : value}
-                // /> :
+                // <InputBox style={style} maxLength={500}/>
+                <textarea
+                    ref={inputRef}
+                    placeholder={placeholder ? placeholder : "Please type in something..."}
+                    maxLength={maxLength}
+                    onChange={value === undefined ? changeHandler : onChange}
+                    value={value === undefined ? content : value}
+                /> 
                 : <input
                     style={style}
                     placeholder={placeholder ? placeholder : "Please type in something..."}

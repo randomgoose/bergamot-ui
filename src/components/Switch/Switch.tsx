@@ -6,9 +6,10 @@ export interface Props {
     disabled?: boolean;
     onToggle?: () => void;
     icon?: ReactNode;
+    label?: string;
 }
 
-const Switch = ({disabled, onToggle, icon}: Props) => {
+const Switch = ({disabled, onToggle, icon, style, label}: Props) => {
     const [checked, setChecked] = useState(false);
 
 
@@ -26,7 +27,7 @@ const Switch = ({disabled, onToggle, icon}: Props) => {
     }
 
     return (
-        <button className={classes} onClick={toggle}>
+        <button className={classes} onClick={toggle} style={style}>
             <div className={`Switch__slider`}>
                 {icon ? <span className={"Switch__icon"}>{icon}</span> : null}
             </div>
