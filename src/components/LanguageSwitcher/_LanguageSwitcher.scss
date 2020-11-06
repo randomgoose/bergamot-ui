@@ -7,7 +7,7 @@
     color: $color-neutral-5;
     background-color: $color-white;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba($color-black, 0.05);
+    box-shadow: 0 4px 10px rgba($color-black, 0.1);
 
     &__languageType {
         color: $color-neutral-5;
@@ -24,7 +24,7 @@
         display: flex;
     }
 
-    .target {
+    .targetLanguage {
         display: flex;
         align-items: center;
     }
@@ -72,14 +72,18 @@
         }
     }
 
-    &.source {
+    &.sourceLanguage {
         .LanguageSwitcher__sourceLanguage {
             color: $color-teal-6;
         }
     }
 
-    &.target {
+    &.targetLanguage {
         .LanguageSwitcher__targetLanguage {
+            color: $color-teal-6;
+        }
+
+        & .targetLanguage {
             color: $color-teal-6;
         }
 

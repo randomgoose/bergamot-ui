@@ -2,6 +2,7 @@ import React, { ChangeEvent, CSSProperties, ReactNode } from "react";
 import classNames from "classnames";
 import { BsXCircleFill } from "react-icons/bs";
 import QualityEstimationContainer from "../QualityEstimationContainer/QualityEstimationContainer";
+import InputBox from "../InputBox/InputBox";
 
 interface Props {
     processing?: boolean;
@@ -78,22 +79,19 @@ const TextField = ({ processing,
 
     return (
         <div className={classes} onDragOver={dragOverHandler} onDragLeave={dragLeaveHandler} onDrop={dropHandler}>
-            <QualityEstimationContainer
-                text={content ? content : ""}
-
-            />
             { prefixIcon ?
                 <span className={"TextField__prefixIcon"}>{prefixIcon}</span> :
                 null}
             { textArea ?
-                <textarea
-                    ref={inputRef}
-                    placeholder={placeholder ? placeholder : "Please type in something..."}
-                    maxLength={maxLength}
-                    onChange={value === undefined ? changeHandler : onChange}
-                    value={value === undefined ? content : value}
-                /> :
-                <input
+                <InputBox style={style} maxLength={500}/>
+                // <textarea
+                //     ref={inputRef}
+                //     placeholder={placeholder ? placeholder : "Please type in something..."}
+                //     maxLength={maxLength}
+                //     onChange={value === undefined ? changeHandler : onChange}
+                //     value={value === undefined ? content : value}
+                // /> :
+                : <input
                     style={style}
                     placeholder={placeholder ? placeholder : "Please type in something..."}
                     maxLength={maxLength}

@@ -1,7 +1,7 @@
 import React from "react";
-import Components from "./components/pages/Components";
-import Demo from "./components/pages/Demo";
-import Transition from "./components/pages/Transition";
+import Components from "./pages/Components";
+import Demo from "./pages/Demo";
+import Transition from "./pages/Transition";
 import "./styles.scss";
 import { Link, Switch, Route } from "react-router-dom";
 

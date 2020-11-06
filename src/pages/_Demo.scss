@@ -1,5 +1,6 @@
 .Demo {
     display: flex;
+    flex-wrap: wrap;
 
     & .Text {
         flex: 1;
@@ -13,14 +14,13 @@
 .BergamotApp {
     width: 320px;
     height: 600px;
-    // background-color: $color-neutral-3;
     position: relative;
     color: $color-neutral-11;
     font-size: 14px;
     border-radius: 4px;
     border: 1px solid $color-neutral-5;
     box-shadow: 0 8px 20px rgba($color-neutral-13, 0.1);
-    overflow: hidden;
+    // overflow: hidden;
     scroll-behavior: smooth;
 
     &::-webkit-scrollbar {
@@ -43,7 +43,6 @@
 
     &__languageSwitcher {
         position: relative;
-        background: $color-neutral-2;
         padding: 16px;
     }
 
@@ -91,21 +90,23 @@
 }
 
 .Home {
-    height: 100%;
     width: 100%;
     display: inline-block;
 }
 
 .Translate {
-    height: 100%;
     min-width: 320px;
     display: inline-block;
     flex-direction: column;
     position: relative;
+    display: flex;
+    height: 600px;
 
     &__body {
-        height: 100%;
         padding: 16px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
     }
 
     &__title {
@@ -115,21 +116,15 @@
     }
 
     &__originText {
-        margin-bottom: 16px;
         height: 50%;
-
-        & textarea {
-            height: 50%;
-            resize: none;
-        }
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 24px;
     }
 
     &__targetText {
         height: 50%;
-
-        & textarea {
-            height: 50%;
-            resize: none;
-        }
+        display: flex;
+        flex-direction: column;
     }
 }

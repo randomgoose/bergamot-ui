@@ -6,37 +6,40 @@ import Icon from "../Icon/Icon";
 
 const Item = MenuItem;
 
-const list = [
-    {
-        value: "English",
-        key: 0
-    },
-    {
-        value: "Czech",
-        key: 1
-    },
-    {
-        value: "German",
-        key: 2
-    },
-    {
-        value: "French",
-        key: 3
-    }
-]
+// [
+//     {
+//         value: "english",
+//         key: 0
+//     },
+//     {
+//         value: "czech",
+//         key: 1
+//     },
+//     {
+//         value: "german",
+//         key: 2
+//     },
+//     {
+//         value: "french",
+//         key: 3
+//     }
+// ]
+
+interface Ilist {
+    value: string,
+    key: number | string
+}
 
 interface Props {
     setSelection?: Function;
     children?: React.ReactNode;
     getPopupContainer?: (node: HTMLElement) => Element;
+    list: Ilist[];
 }
 
-const Menu = ({ setSelection, children }: Props) => {
+const Menu = ({ setSelection, children, list }: Props) => {
     const menuRef = React.useRef<HTMLDivElement>(null)
     const [isActive, setIsActive] = React.useState(false);
-
-    console.log(children)
-
 
     const items = list.map(i => (
         <Item key={i.key.toString()}

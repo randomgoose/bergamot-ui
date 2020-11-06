@@ -4,9 +4,11 @@ import { BsChevronDown } from "react-icons/bs";
 import Menu from "../Menu/Menu";
 import Icon from "../Icon/Icon";
 import { BiTransfer } from "react-icons/bi";
+import { useDispatch, useSelector } from "react-redux";
+import { TranslatorState, translatorSlice } from "../../redux/store";
 
 interface Props {
-    onSwitch: (language: string) => void;
+    onSwitch?: (language: string) => void;
 }
 
 const languageList = [
@@ -18,49 +20,54 @@ const languageList = [
 const sourceLanguage = "English";
 
 const LanguageSwitcher = ({ onSwitch }: Props) => {
-    const [language, setLanguage] = React.useState("source");
-    const [targetLanguage, setTargetLanaguage] = React.useState("Czech");
-    const [listOpen, setListOpen] = React.useState(false);
+    const targetLanguage = useSelector((state: TranslatorState) => state.targetLanguage);
+    const inboundTranslationLanguage = useSelector((state: TranslatorState) => state.inboundTranslationLanguage);
+    const dispatch = useDispatch();
+
 
     const classes = classNames({
         LanguageSwitcher: "LanguageSwitcher",
-        [`${language}`]: language
+        [`${inboundTranslationLanguage}`]: inboundTranslationLanguage
     });
 
     React.useEffect(() => {
-        onSwitch(targetLanguage);
+        if (onSwitch) onSwitch(targetLanguage);
     }, [targetLanguage])
 
-
-    const languages = languageList.map(i => <option value={i} key={Math.random()}>{i}</option>);
-
-    const switchLanguage = (e?: React.MouseEvent<HTMLSpanElement>) => {
-        return (language: string) => setLanguage(language);
-    }
-
     const changeTargetLanguage = (language: string) => {
-        setTargetLanaguage(language);
-    }
-
-    const changeSwitchLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setTargetLanaguage(e.target.value);
-    }
-
-    const blurHandler = (e: React.FocusEvent<HTMLSpanElement>) => {
-        setListOpen(false)
+        dispatch(translatorSlice.actions.setTargetLanguage(language));
     }
 
     return (
         <div className={classes}>
-            <span className={"LanguageSwitcher__sourceLanguage"} onClick={e => switchLanguage(e)("source")}>
-            <span className={"LanguageSwitcher__languageType"}>Source</span>
+            <span className={"LanguageSwitcher__sourceLanguage"}
+                  onClick={() => dispatch(translatorSlice.actions.switchInboundTranslationLanguage("sourceLanguage"))}>
+                <span className={"LanguageSwitcher__languageType"}>Source</span>
                 {sourceLanguage}
             </span>
             <span className={"LanguageSwitcher__delimiter"}><Icon style={{ width: 24, height: 24, color: "#30d5c8" }} icon={<BiTransfer />} /></span>
-            <span className={"LanguageSwitcher__targetLanguage"} onClick={e => switchLanguage(e)("target")}>
+            <span className={"LanguageSwitcher__targetLanguage"}
+                  onClick={() => dispatch(translatorSlice.actions.switchInboundTranslationLanguage("targetLanguage"))}>
                 <span className={"LanguageSwitcher__languageType"}>Target</span>
-                <span className={"target"}>{targetLanguage}
-                    <Menu setSelection={changeTargetLanguage}>
+                <span className={"targetLanguage"}>{targetLanguage}
+                    <Menu list={[
+                        {
+                            value: "english",
+                            key: 0
+                        },
+                        {
+                            value: "czech",
+                            key: 1
+                        },
+                        {
+                            value: "german",
+                            key: 2
+                        },
+                        {
+                            value: "french",
+                            key: 3
+                        }
+                    ]} setSelection={changeTargetLanguage}>
                         <span className={"LanguageSwitcher__select"}>
                             <BsChevronDown />
                         </span>

@@ -1,18 +1,18 @@
 import React from "react";
-import Button from "../Button/Button";
-import Palette from "../Palette/Palette";
-import Switch from "../Switch/Switch";
-import TextField from "../TextField/TextField";
-import Alert from "../Alert/Alert";
-import Checkbox from "../Checkbox/Checkbox";
+import Button from "../components/Button/Button";
+import Palette from "../components/Palette/Palette";
+import Switch from "../components/Switch/Switch";
+import TextField from "../components/TextField/TextField";
+import Alert from "../components/Alert/Alert";
+import Checkbox from "../components/Checkbox/Checkbox";
 import { BsPerson, BsPlus, BsGear, BsFillInfoCircleFill, BsXCircleFill, BsQuestionCircleFill, BsFlagFill, BsClock, BsArrowRepeat, BsLockFill, BsApp, BsChevronRight, BsLightningFill, BsVolumeUpFill, BsPower } from "react-icons/bs"
-import Radio from "../Radio/Radio";
-import Card from "../Card/Card";
-import Progress from "../Progress/Progress";
-import ControlledProgress from "../Progress/demos/ControlledProgress";
-import Table from "../Table/Table";
-import List from "../List/List";
-import Menu from "../Menu/Menu";
+import Radio from "../components/Radio/Radio";
+import Card from "../components/Card/Card";
+import Progress from "../components/Progress/Progress";
+import ControlledProgress from "../components/Progress/demos/ControlledProgress";
+import Table from "../components/Table/Table";
+import List from "../components/List/List";
+import Menu from "../components/Menu/Menu";
 
 export const data = [
   {
@@ -238,7 +238,24 @@ export default function Components() {
 
       <h3>Menu</h3>
       <Card title={"Menu"} style={{ width: "100%" }}>
-        <Menu>
+        <Menu list={[
+    {
+        value: "english",
+        key: 0
+    },
+    {
+        value: "czech",
+        key: 1
+    },
+    {
+        value: "german",
+        key: 2
+    },
+    {
+        value: "french",
+        key: 3
+    }
+]}>
           <Button label={"Button"}/>
         </Menu>
       </Card>
