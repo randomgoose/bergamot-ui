@@ -26,6 +26,7 @@ const App = () => {
       <Link to={"/components"}>Components</Link>
       <Link to={"/demo"}>Demo</Link>
       <Link to={"/transition"}>Transition</Link>
+
       { routes }
     </div>
   )
